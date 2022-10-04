@@ -33,10 +33,10 @@ app.post("/", function(req, res){
      ]
   };
   var jsonData = JSON.stringify(data);
-  const url = "https://us2.api.mailchimp.com/3.0/lists/7a7fe29606";
+  const url = `https://us2.api.mailchimp.com/3.0/lists/${process.env.LIST};
   const options = {
     method: "POST",
-    auth: "pascal1:6a4c26f77a068890b579fcc3ba13e6ca-us2"
+    auth: process.env.AUTH
   };
 const request = https.request(url, options, function(response){
 
@@ -61,6 +61,3 @@ app.post("/failure", function(){
 app.listen(process.env.PORT || 3000, function(){
   console.log("Server is running");
 });
-
-// List ID 7a7fe29606
-// API Key 6a4c26f77a068890b579fcc3ba13e6ca-us2
